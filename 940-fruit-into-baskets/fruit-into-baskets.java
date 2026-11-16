@@ -1,28 +1,29 @@
 public class Solution {
 
     public int totalFruit(int[] fruits) {
-        int left = 0;
-        int maxFruits = 0;
-        int uniqueTypes = 0;
-        int[] counts = new int[fruits.length + 1];
+        int n = fruits.length;
+        int[] count = new int[n + 1];
+        int start = 0;
+        int distinct = 0;
+        int ans = 0;
         
-        for (int right = 0; right < fruits.length; right++) {
-            if (counts[fruits[right]] == 0) {
-                uniqueTypes++;
+        for (int end = 0; end < n; end++) {
+            if (count[fruits[end]] == 0) {
+                distinct++;
             }
-            counts[fruits[right]]++;
+            count[fruits[end]]++;
             
-            while (uniqueTypes > 2) {
-                counts[fruits[left]]--;
-                if (counts[fruits[left]] == 0) {
-                    uniqueTypes--;
+            while (distinct > 2) {
+                count[fruits[start]]--;
+                if (count[fruits[start]] == 0) {
+                    distinct--;
                 }
-                left++;
+                start++;
             }
             
-            maxFruits = Math.max(maxFruits, right - left + 1);
+            ans = Math.max(ans, end - start + 1);
         }
         
-        return maxFruits;
+        return ans;
     }
 }
