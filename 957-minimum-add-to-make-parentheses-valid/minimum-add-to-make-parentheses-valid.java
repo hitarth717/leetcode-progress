@@ -2,22 +2,22 @@
 class Solution {
     public int minAddToMakeValid(String s) {
 
-        int openBrackets = 0;
-        int missingBrackets = 0;
+        int openBracket = 0;
+        int missingBracket = 0;
 
         for (char ch : s.toCharArray()) {
 
             if (ch == '(') {
-                openBrackets++;
+                openBracket++;
             }
-            else if (openBrackets > 0) {
-                openBrackets--;
+            else if (openBracket > 0) {
+                openBracket--;
             }
             else {
-                missingBrackets++;
+                missingBracket++;
             }
         }
 
-        return openBrackets + missingBrackets;
+        return openBracket + missingBracket;
     }
 }
